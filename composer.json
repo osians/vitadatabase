@@ -1,0 +1,29 @@
+{
+    "name" : "osians/vitadatabase",
+    "version": "1.0.1",
+    "description": "Serviço Driver de Banco de Dados",
+    "keywords": ["MySQL", "Database", "PDO",  "php", "Vita"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wanderlei Santana do Nascimento",
+            "email": "sans.pds@gmail.com",
+            "role": "Creator / Main Developer",
+            "homepage": "http://sooho.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+         "phpunit/phpunit": "^6.5"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "vitadatabase\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
