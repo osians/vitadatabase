@@ -1,0 +1,7 @@
+.gitignore
+.phpunit.result.cache
+composer.lock
+*.log
+*.dat
+vendor/
+notas

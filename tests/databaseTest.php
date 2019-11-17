@@ -15,9 +15,9 @@ class VitaDatabaseTest extends PHPUnit\Framework\TestCase
         $this->mysql = Osians\Database\Factory::create('MySQL', array(
             'hostname' => '127.0.0.1',
             'port' => '3306',
-            'username' => 'root',
-            'password' => '',
-            'database' => 'vita_controle'
+            'username' => 'osians',
+            'password' => '123456',
+            'database' => 'vita'
         ));
 
 
@@ -35,9 +35,9 @@ class VitaDatabaseTest extends PHPUnit\Framework\TestCase
         $mysql = Osians\Database\Factory::create('MySQL', array(
             'hostname' => '127.0.0.1',
             'port' => '3306',
-            'username' => 'root',
-            'password' => '',
-            'database' => 'vita_controle'
+            'username' => 'osians',
+            'password' => '123456',
+            'database' => 'vita'
         ));
         $this->assertInstanceOf('\Osians\Database\Db', $mysql);
     }
@@ -54,25 +54,25 @@ class VitaDatabaseTest extends PHPUnit\Framework\TestCase
     public function testConsultaMysql()
     {
         $this->mysql->query(
-            "SELECT idcategoria, categoria, idparent, status 
-             FROM categorias 
-             WHERE idcategoria = :idcategoria"
+            "SELECT id_categoria, nome, id_parent, ativo 
+             FROM categoria 
+             WHERE id_categoria = :id_categoria"
         );
-        $this->mysql->bind(':idcategoria', '1');
+        $this->mysql->bind(':id_categoria', '1');
         $row = $this->mysql->single();
 
-        $this->assertArrayHasKey('idcategoria', $row);
+        $this->assertArrayHasKey('id_categoria', $row);
     }
 
     public function testInsertMysql()
     {
         # Inserindo registros ...
-        $this->mysql->query('INSERT INTO categorias (idcategoria, categoria, idparent, status) VALUES (:idcategoria, :categoria, :idparent, :status)');
+        $this->mysql->query('INSERT INTO categoria (id_categoria, nome, id_parent, ativo) VALUES (:id_categoria, :nome, :id_parent, :ativo)');
 
-        $this->mysql->bind(':idcategoria', null);
-        $this->mysql->bind(':categoria', 'TestInserção MySQL');
-        $this->mysql->bind(':idparent', null);
-        $this->mysql->bind(':status', '1');
+        $this->mysql->bind(':id_categoria', null);
+        $this->mysql->bind(':nome', 'Test ' . date('D, d M Y H:i:s'));
+        $this->mysql->bind(':id_parent', null);
+        $this->mysql->bind(':ativo', 1);
 
         $this->mysql->execute();
 

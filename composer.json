@@ -2,7 +2,7 @@
     "name" : "osians/vitadatabase",
     "version": "1.0.1",
     "description": "Serviço Driver de Banco de Dados",
-    "keywords": ["MySQL", "Database", "PDO",  "php", "Vita"],
+    "keywords": ["MySQL", "Database", "PDO", "php", "Vita"],
     "license": "MIT",
     "authors": [
         {
